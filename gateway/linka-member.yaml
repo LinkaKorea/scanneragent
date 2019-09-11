@@ -1,0 +1,101 @@
+---
+
+name: "linka-member-peer"
+
+x-type: "hlfv1"
+
+description: "Linka Transfer Network - client definition for Member Peer & Orderer"
+
+version: "1.0"
+
+client:
+  organization: LinkaMember
+
+  credentialStore:
+    path: "./linka-member-kv"
+  privateKey:
+    path: /path/to/file
+  signedCert:
+     path:  /path/to/file
+
+channels:
+  linkawhite:
+    orderers:
+      - orderer0.testnet.linka.io
+      - orderer1.testnet.linka.io
+      - orderer2.testnet.linka.io
+      
+    peers:
+      adminpeer.testnet.linka.io:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+      memberpeer.testnet.linka.io:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+      guestpeer.testnet.linka.io:
+        endorsingPeer: false
+        chaincodeQuery: false
+        ledgerQuery: true
+        eventSource: false
+
+    chaincodes:
+      - linkatoken:v1
+
+  linkagray:
+    orderers:
+      - orderer0.testnet.linka.io
+      - orderer1.testnet.linka.io
+      - orderer2.testnet.linka.io
+      
+    peers:
+      adminpeer.testnet.linka.io:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+      memberpeer.testnet.linka.io:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+      guestpeer.testnet.linka.io:
+        endorsingPeer: false
+        chaincodeQuery: false
+        ledgerQuery: true
+        eventSource: false
+
+    chaincodes:
+      - linkatoken:v1
+      
+organizations:
+  LinkaMember:
+    mspid: LinkaMember
+    peers:
+      - memberpeer.testnet.linka.io
+
+
+
+orderers:
+  orderer0.testnet.linka.io:
+    url: grpcs://orderer0.testnet.linka.io:7050
+    grpcOptions:
+      ssl-target-name-override: orderer0.testnet.linka.io
+    tlsCACerts:
+      path:  /path/to/file
+
+
+peers:
+
+  memberpeer.testnet.linka.io:
+    url: grpcs://memberpeer.testnet.linka.io:8051
+
+    grpcOptions:
+      ssl-target-name-override: memberpeer.testnet.linka.io
+      request-timeout: 120000
+    tlsCACerts:
+      path:  /path/to/file
+

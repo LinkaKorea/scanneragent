@@ -1,0 +1,55 @@
+{
+  "dev": {
+    "mysql": {
+      "host": "localhost",
+      "port": 3306,
+      "user": "linka",
+      "password": "linkapassword",
+      "database": "syncagent",
+      "dialect": "mysql",
+      "pool": {
+        "max": 5,
+        "min": 5,
+        "idle": 10000
+      },
+      "timezone": "+09:00"
+    },
+    "sqlite": {
+      "dialect": "sqlite",
+      "storage": "/path/to/sqlite"
+    },
+    "jwtSecret": "jwtsecret",
+    "accessTokenValidity": 86400,
+    "app": [
+      {
+        "apiKey": "apikey",
+        "apiSecret": "apisecret"
+      }
+    ],
+    "wallet": {
+      "apiKey": "apikey",
+      "apiSecret": "apisecret",
+      "endpoint": "http://localhost",
+      "endpointService": {
+        "token": "/v3/auth/token",
+        "depositWithdraw": "/v3/app/mainnet/depositWithdraw"
+      }
+    },
+    "mainnet": {
+      "endpoint": {
+        "orderer": "http://orderer0.testnet.linka.io:7050",
+        "peer": "http://memberpeer.testnet.linka.io:8051"
+      },
+      "peers": [
+        "memberpeer.testnet.linka.io"
+      ],
+      "channelName": "linkawhite",
+      "chaincodeName": "linkatoken",
+      "orgName": "linkamember",
+      "configPath": "./gateway/linka-member.yaml"
+    },
+    "linkScannerSyncAgent": {
+      "interval": "*/10 * * * * *"
+    }
+  }
+}

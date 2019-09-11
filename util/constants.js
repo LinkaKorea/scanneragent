@@ -1,0 +1,12 @@
+const CODES = {
+    SUCCESS: 0,
+    ERROR_EXCEPTION: -11,
+    ERROR_ACTION: -21
+};
+
+const LINKA = "LINKA";
+const MAINNET_LINKA = "MLINKA";
+
+exports.RETURN_CODES = CODES;
+exports.LINKA = LINKA;
+exports.MAINNET_LINKA = MAINNET_LINKA;
